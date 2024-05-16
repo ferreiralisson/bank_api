@@ -30,7 +30,7 @@ public class ContaService {
 
     public ContaEntity buscarConta(Long id) throws Exception {
         return contaRepository.findById(id)
-                .orElseThrow(() -> new Exception("Conta não encontrada"));
+                .orElseThrow(() -> new Exception("Conta nao encontrada"));
     }
 
 }

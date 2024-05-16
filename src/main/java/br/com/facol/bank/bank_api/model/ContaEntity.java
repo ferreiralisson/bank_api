@@ -6,9 +6,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(schema = "bank", name = "conta")
+@NoArgsConstructor
+@Getter
+@Setter
 public class ContaEntity {
 
     @Id
@@ -16,24 +24,8 @@ public class ContaEntity {
     private Long id;
 
     @Column(name = "numero_conta")
+    @NotBlank(message = "Numero da conta nao pode ficar vazio")
+    @Min(message = "numero da conta abaixo do minimo", value = 1L)
     private String numeroConta;
-
-    public ContaEntity(){}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNumeroConta() {
-        return numeroConta;
-    }
-
-    public void setNumeroConta(String numeroConta) {
-        this.numeroConta = numeroConta;
-    }
 
 }
